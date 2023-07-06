@@ -1,0 +1,275 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events Venue a Wedding Category Bootstrap responsive Website Template | About :: w3layouts</title>
+	{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Venue Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link href="{% static 'bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="{% static 'PRO.css' %}" type="text/css" media="all" />
+<!--// css -->
+<!-- font-awesome icons -->
+<link href="{% static 'font-awesome.css' %}" rel="stylesheet">
+<!-- //font-awesome icons -->
+<!-- font -->
+<link href='//fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!-- //font -->
+<script src="{% static 'jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'bootstrap.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- banner -->
+	<div class="banner">
+		<div class="header">
+			<div class="container">
+				<div class="header-left">
+					<div class="w3layouts-logo">
+						<h1>
+							<a href="index">Events <span>Venue</span></a>
+						</h1>
+					</div>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li><a href="{% url 'index' %}">Home</a></li>
+								<li><a href="{% url 'about' %}">About</a></li>
+								<li><a class="active" href="{% url 'services' %}">Services</a></li>
+								<li><a href="{% url 'booking' %}">Bookings</a></li>
+								{% if username %}
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<img src="{% static 'icons8-user-folder-26.png' %}" alt="User Icon">
+											{{ username }}
+											<span class="caret"></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="{% url 'logout' %}" id="logout-link">Logout</a></li>
+										</ul>
+									</li>
+								{% endif %}
+							</ul>
+							<div class="clearfix"> </div>
+						</div>
+						<script>
+							$(document).ready(function() {
+								$('#logout-link').click(function(e) {
+									e.preventDefault();
+									var sessionId = "{{ request.session.session_key }}";
+									var username = "{{ username }}";
+									var confirmation = confirm("Are you sure you want to logout your account, " + username + "?");
+									if (confirmation) {
+										// Perform a logout request using the session ID
+										fetch("/logout/", {
+											method: "POST",
+											headers: {
+												"Content-Type": "application/json",
+												"X-CSRFToken": "{{ csrf_token }}"
+											},
+											body: JSON.stringify({ session_id: sessionId })
+										})
+											.then(function(response) {
+												// Redirect to the login page or perform any other action
+												window.location.href = "{% url 'login' %}";
+											})
+											.catch(function(error) {
+												console.error("Logout request failed:", error);
+											});
+									}
+								});
+							});
+						</script>
+					</nav>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="agileinfo-top-heading">
+			<h2>Our Services</h2>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!-- about -->
+	<div class="main-textgrids">
+		<div class="container">
+			<div class="col-md-5 ab-pic">
+				 <img src="{% static 'CONVENTIONCOVER.jpg' %}" alt=" " />
+			</div>
+			<div class="col-md-7 ab-text">
+				<h4 class="link-heading"><a href="{% url 'convention' %}">Convention Centre & Auditorium</a></h4>
+				<p class="simple-para">Discover a world of captivating conventions at EVENT VENUE. Our convention booking service offers a curated selection of immersive and engaging events for every interest. From industry conferences to specialized gatherings, explore a diverse range of conventions that cater to your passion. Our user-friendly platform allows you to browse through a comprehensive list of conventions, each designed to provide valuable insights, networking opportunities, and unforgettable experiences. With just a few clicks, secure your spot and join like-minded individuals in an environment dedicated to knowledge-sharing, innovation, and inspiration.</p>
+
+			</div>
+			<div class="clearfix"> </div>
+			<div class="statements">
+				<div class="col-md-7 mission">
+					<h4 class="link-heading"><a href="{% url 'catering' %}">Catering Services</a></a></h4>
+					 <p class="simple-para">Indulge in a seamless catering experience with our comprehensive catering service at EVENT VENUE. Discover a wide selection of top-tier catering services that cater to your culinary preferences and event requirements. From intimate gatherings to lavish affairs, our platform offers a curated list of reputable catering providers renowned for their exceptional quality and service. With our user-friendly booking system, securing the perfect caterer for your event is effortless. Delight your guests with exquisite menus, impeccable presentation, and personalized service, as our catering partners bring their culinary expertise to make your occasion truly memorable. Trust us to handle the details, while you savor the flavors and create unforgettable moments.</p>
+
+				</div>
+				<div class="col-md-5 facts">
+					<img src="{% static 'CATERINGCOVER.jpg' %}" alt=" " />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-5 ab-pic">
+				 <img src="{% static 'DECORATIONCOVER.jpg' %}" alt=" " />
+			</div>
+			<div class="col-md-7 ab-text">
+				<h4 class="link-heading"><a href="{% url 'decoration' %}">Decoration Services</a></a></h4>
+				<p class="simple-para">Transform your event into a visual masterpiece with our exquisite decoration service at EVENT VENUE. Explore a curated collection of stunning decor options that cater to a diverse range of themes and aesthetics. Our platform showcases a comprehensive list of professional decorators renowned for their creativity and attention to detail. Whether you envision an enchanting fairy-tale setting or a modern and sleek ambiance, our decorators are here to bring your vision to life. With our user-friendly interface, browsing through the array of decoration choices is a breeze, and booking your preferred decor is just a few clicks away. Elevate your event's atmosphere with captivating designs, meticulous craftsmanship, and a touch of elegance, ensuring an unforgettable experience for you and your guests.</p>
+
+			</div>
+			<div class="clearfix"> </div>
+			<div class="statements">
+				<div class="col-md-7 mission">
+					 <h4 class="link-heading"><a href="{% url 'photography' %}">Photography/Videography</a></h4>
+					 <p class="simple-para">Capture the essence of your special moments with our exceptional photography service at EVENT VENUE. Discover a network of talented photographers and studios renowned for their artistry and skill. From weddings to corporate events, our photographers are dedicated to immortalizing your cherished memories with creativity and professionalism. Browse through a curated selection of portfolios, each showcasing a unique style and perspective. With our user-friendly platform, booking your preferred photographer or studio is a seamless process. Trust us to document your event with stunning imagery, preserving the emotions and stories that make your occasion truly extraordinary.</p>
+
+				</div>
+				<div class="col-md-5 facts">
+					<img src="{% static 'PHOTOGRAPHYCOVER.jpg' %}" alt=" " />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-5 ab-pic">
+				 <img src="{% static 'ENTERTAINMENTCOVER.jpg' %}" alt=" " />
+			</div>
+			<div class="col-md-7 ab-text">
+				<h4 class="link-heading"><a href="{% url 'entertainment' %}">Entertainment</a></h4>
+				<p class="simple-para">Elevate the ambiance of your event with our captivating entertainment service at EVENT VENUE. Discover a curated list of entertainment programs that add flair and excitement to any occasion. From lively song performances to mesmerizing music programs, our platform showcases a variety of talented entertainers. Whether you're planning a wedding or a corporate gala, our diverse range of entertainment options caters to different tastes and preferences. With our user-friendly interface, browsing through the available programs is effortless, and booking your desired entertainment is just a few clicks away. Delight your guests and create lasting memories with our exceptional entertainment offerings.</p>
+
+			</div>
+			<div class="clearfix"> </div>
+			<div class="statements">
+				<div class="col-md-7 mission">
+					 <h4 class="link-heading"><a href="{% url 'accommodation' %}">Accommodations</a></h4>
+					 <p class="simple-para">Ensure a comfortable stay for your guests with our exceptional accommodation service at EVENT VENUE. Explore a curated selection of hotels renowned for their comfort, convenience, and exceptional service. Our platform offers a comprehensive list of hotels, each handpicked to meet the diverse needs and preferences of your guests. From luxury resorts to cozy boutique hotels, find the perfect accommodation option for every budget and style. With our user-friendly booking system, reserving rooms for your guests is quick and hassle-free. Trust us to provide a seamless experience, allowing you to focus on creating unforgettable moments while ensuring your loved ones have a delightful stay during your special event.</p>
+
+				</div>
+				<div class="col-md-5 facts">
+					<img src="{% static 'HOTELCOVER.jpg' %}" alt=" " />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-5 ab-pic">
+				 <img src="{% static 'TRAVELSCOVER.jpg' %}" alt=" " />
+			</div>
+			<div class="col-md-7 ab-text">
+				<h4 class="link-heading"><a href="{% url 'transportation' %}">Transportation</a></h4>
+				<p class="simple-para">Make your event day travel seamless with our reliable transportation service at EVENT VENUE. Explore a curated list of transportation options that cater to your specific needs, ensuring a smooth and hassle-free journey. From luxury cars to spacious vans, our platform offers a diverse range of services to accommodate any group size or travel requirement. Whether you need transportation for a wedding procession, corporate event, or any other special occasion, our trusted providers are committed to delivering exceptional service. With our user-friendly booking system, reserving your preferred mode of transportation is effortless, allowing you to focus on enjoying the moment while we take care of the logistics. Trust us to provide reliable and comfortable transportation, ensuring a memorable and stress-free event day experience.</p>
+
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+
+	<!-- //about -->
+	<!-- footer -->
+	<footer>
+		<div class="agileits-w3layouts-footer-top">
+			<div class="container">
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="agileits-footer-bottom">
+			<div class="container">
+				<div class="agileits-footer-bottom-grids">
+					<div class="col-md-6 footer-bottom-left">
+						<h5>About Us</h5>
+						<div class="footer-img-grids">
+							<div class="footer-img">
+								<img src="{% static 'event-venue.png' %}" alt="" />
+							</div>
+							<div class="footer-img-info">
+								<p>EVENT VENUE: Where unforgettable moments come to life. Discover the perfect venue, services, and support for your dream event. We simplify event planning, so you can focus on creating lasting memories. With our exceptional attention to detail and personalized approach, we ensure that every aspect of your event is tailored to perfection, exceeding your expectations.</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="col-md-3 footer-bottom-right">
+						<h5>Useful Links</h5>
+						<ul class="ab">
+							<li><a href="{% url 'index' %}">Home</a></li>
+							<li><a href="{% url 'about' %}">About</a></li>
+							<li><a href="{% url 'services' %}">Services</a></li>
+							<li><a href="{% url 'booking' %}">Bookings</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-bottom-right">
+						<h5>Privacy & Policy</h5>
+						<p>Your privacy is our priority. We collect and use your information solely to enhance your experience with EVENT VENUE. Rest assured, we maintain strict confidentiality and employ robust security measures to protect your data.</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+				<p>© 2023 Events Venue. All rights reserved | Design by Events Venue</p>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+	<script src="{% static 'jarallax.js' %}"></script>
+	<script src="{% static 'SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+<script type="text/javascript" src="{% static 'move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'easing.js' %}"></script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>

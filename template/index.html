@@ -1,0 +1,320 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events Venue a Wedding Category Bootstrap responsive Website Template | Home :: w3layouts</title>
+	{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Venue Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link href="{% static 'bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="{% static 'PRO.css' %}" type="text/css" media="all" />
+<!--// css -->
+<!-- font-awesome icons -->
+<link href="{% static 'font-awesome.css' %}" rel="stylesheet">
+<!-- //font-awesome icons -->
+<!-- font -->
+<link href='//fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!-- //font -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'bootstrap.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- banner -->
+	<div class="banner">
+		<div class="header">
+			<div class="container">
+				<div class="header-left">
+					<div class="w3layouts-logo">
+						<h1>
+							<a href="index">Events <span>Venue</span></a>
+						</h1>
+					</div>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li><a class="active" href="{% url 'index' %}">Home</a></li>
+								<li><a href="{% url 'about' %}">About</a></li>
+								<li><a href="{% url 'services' %}">Services</a></li>
+								<li><a href="{% url 'booking' %}">Bookings</a></li>
+								{% if username %}
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<img src="{% static 'icons8-user-folder-26.png' %}" alt="User Icon">
+											{{ username }}
+											<span class="caret"></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="{% url 'logout' %}" id="logout-link">Logout</a></li>
+										</ul>
+									</li>
+								{% endif %}
+							</ul>
+							<div class="clearfix"> </div>
+						</div>
+						<script>
+							$(document).ready(function() {
+								$('#logout-link').click(function(e) {
+									e.preventDefault();
+									var sessionId = "{{ request.session.session_key }}";
+									var username = "{{ username }}";
+									var confirmation = confirm("Are you sure you want to logout your account, " + username + "?");
+									if (confirmation) {
+										// Perform a logout request using the session ID
+										fetch("/logout/", {
+											method: "POST",
+											headers: {
+												"Content-Type": "application/json",
+												"X-CSRFToken": "{{ csrf_token }}"
+											},
+											body: JSON.stringify({ session_id: sessionId })
+										})
+											.then(function(response) {
+												// Redirect to the login page or perform any other action
+												window.location.href = "{% url 'login' %}";
+											})
+											.catch(function(error) {
+												console.error("Logout request failed:", error);
+											});
+									}
+								});
+							});
+						</script>
+					</nav>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="w3layouts-banner-slider">
+
+			<div class="container">
+				<div class="slider">
+					<div class="callbacks_container">
+						<ul class="rslides callbacks callbacks1" id="slider4">
+							<li>
+								<div class="agileits-banner-info">
+									<h3>Enjoy <span>your best day ever</span></h3>
+								</div>
+							</li>
+							<li>
+								<div class="agileits-banner-info">
+									<h3>Create <span>your special day</span></h3>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<script src="{% static 'responsiveslides.min.js' %}"></script>
+					<script>
+						// You can also use "$(window).load(function() {"
+						$(function () {
+						  // Slideshow 4
+						  $("#slider4").responsiveSlides({
+							auto: true,
+							pager:true,
+							nav:false,
+							speed: 500,
+							namespace: "callbacks",
+							before: function () {
+							  $('.events').append("<li>before event fired.</li>");
+							},
+							after: function () {
+							  $('.events').append("<li>after event fired.</li>");
+							}
+						  });
+					
+						});
+					 </script>
+					<!--banner Slider starts Here-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<div class="container">
+			<div class="bottom-text">
+				<p>At EVENT VENUE, we understand the tremendous effort and dedication it takes to orchestrate a truly memorable event. We salute the event organizers who tirelessly work behind the scenes, ensuring every detail is perfect. Your unwavering commitment and passion are what make extraordinary moments possible. With our user-friendly platform, we aim to make your event planning journey seamless and stress-free. Say goodbye to sleepless nights and countless hours of research, because we're here to lighten your load. Our comprehensive range of services, from venue selection to top-tier vendors and reliable logistics support, is tailored to meet your specific needs. We believe that events have the power to create lasting connections, foster creativity, and showcase the vibrant diversity of cultures. By choosing EVENT VENUE, your worries are now over, and you can focus on what truly matters – creating unforgettable memories and enjoying every moment of your special occasion. Join us and experience the joy of effortless event planning.</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+
+		<div class="clearfix"> </div>
+	</div>
+	<!-- //banner-bottom -->
+	<!-- welcome -->
+	<div class="welcome">
+		<div class="container">
+			<div class="welcome-grids">
+				<div class="col-md-6 w3ls-welcome-left">
+					<div class="w3ls-welcome-left-img">
+						<img src="{% static '3.jpg' %}" alt="" />
+					</div>
+				</div>
+				<div class="col-md-6 w3ls-welcome-right">
+					<div class="w3ls-welcome-right-info">
+						<h2>Event <span> Venue</span></h2>
+						<p>Welcome to EVENT VENUE, your all-in-one solution for effortless event management. Whether you're planning a grand convention, a memorable wedding, or any special occasion, we've got you covered. From exquisite venues and delectable catering to stunning decorations and captivating entertainment, we bring your dreams to life. Our team of experienced professionals ensures every detail is meticulously taken care of, leaving you free to enjoy your event to the fullest. With our seamless online platform, you can easily book everything you need, from top-notch photographers to luxurious accommodations and hassle-free travel arrangements. Get ready for a truly unforgettable experience. Let EVENT VENUE turn your vision into a reality and create memories that will last a lifetime.</span></p>
+					</div>
+					<div class="agileits-border">
+						<div class="agileinfo-red"> </div>
+						<div class="agileinfo-red agileinfo-green"> </div>
+						<div class="agileinfo-red agileinfo-blue"> </div>
+						<div class="agileinfo-red agileinfo-yellow"> </div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //welcome -->
+	<!-- services -->
+	<div class="main-textgrids">
+		<div class="container">
+			<div class="w3-agileits-heading">
+				<h3>Best <span>Services</span></h3>
+			</div>
+			<div class="statements">
+				<div class="col-md-7 mission">
+					<p>Discover a wide range of services tailored to make your event extraordinary. At EVENT VENUE, we offer stunning venues, delectable catering, captivating entertainment, seamless logistics, and more. Whether you're planning a corporate conference, a lavish wedding, or any special occasion, our dedicated team is here to assist you every step of the way. From venue selection to seamless booking, we ensure a hassle-free experience, allowing you to focus on creating unforgettable moments.</p>
+					<ul class="ab">
+						<li><a href="convention">Convention center / Auditorium</a></li>
+						<li><a href="catering">Catering</a></li>
+						<li><a href="decoration">Decoration</a></li>
+						<li><a href="photography">Photography and Videography</a></li>
+						<li><a href="entertainment">Entertainment Programs</a></li>
+						<li><a href="accommodation">Accommodation</a></li>
+						<li><a href="transportation">Transportation</a></li>
+					</ul>
+				</div>
+				<div class="col-md-5 facts">
+					<img src="{% static 'SERVICE.jpg' %}" alt=" " />
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //services -->
+	<!-- footer -->
+	<footer>
+		<div class="agileits-w3layouts-footer-top">
+			<div class="container">
+
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#username-link').click(function(e) {
+                                            e.preventDefault();
+                                            $('#logout-link').toggle();
+                                        });
+                                    });
+                                </script>
+
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+
+
+		<div class="agileits-footer-bottom">
+			<div class="container">
+				<div class="agileits-footer-bottom-grids">
+					<div class="col-md-6 footer-bottom-left">
+						<h5>About Us</h5>
+						<div class="footer-img-grids">
+							<div class="footer-img">
+								<img src="{% static 'event-venue.png' %}" alt="" />
+							</div>
+							<div class="footer-img-info">
+								<p>EVENT VENUE: Where unforgettable moments come to life. Discover the perfect venue, services, and support for your dream event. We simplify event planning, so you can focus on creating lasting memories. With our exceptional attention to detail and personalized approach, we ensure that every aspect of your event is tailored to perfection, exceeding your expectations.</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="col-md-3 footer-bottom-right">
+						<h5>Useful Links</h5>
+						<ul class="ab">
+							<li><a href="{% url 'index' %}">Home</a></li>
+							<li><a href="{% url 'about' %}">About</a></li>
+							<li><a href="{% url 'services' %}">Services</a></li>
+							<li><a href="{% url 'booking' %}">Bookings</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3 footer-bottom-right">
+						<h5>Privacy & Policy</h5>
+						<p>Your privacy is our priority. We collect and use your information solely to enhance your experience with EVENT VENUE. Rest assured, we maintain strict confidentiality and employ robust security measures to protect your data.</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+				<p>© 2023 Events Venue. All rights reserved | Design by Events Venue</p>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+	<script src="{% static 'responsiveslides.min.js' %}"></script>
+	<script src="{% static 'jarallax.js' %}"></script>
+	<script src="{% static 'SmoothScroll.min.js' %}"></script>
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+<script type="text/javascript" src="{% static 'move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'easing.js' %}"></script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>	
+</html>
